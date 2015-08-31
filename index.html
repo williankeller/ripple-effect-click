@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lollipop Effect Click</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">        
+        <style>
+            @keyframes cliqueEfeito {
+                from {
+                    opacity: 0.7;
+                    transform: scale(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(2);
+                }
+            }
+
+            @-webkit-keyframes cliqueEfeito {
+                from {
+                    opacity: 0.7;
+                    transform: scale(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(2);
+                }
+            }
+            .btn {
+                position:relative;
+            }
+            .container {
+                margin-top: 100px;
+            }
+            .efeito {
+                margin: -100px;
+                width: 200px;
+                height: 200px;
+                border-radius: 100px;
+                position: absolute;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                pointer-events: none;                
+                -webkit-animation: cliqueEfeito 1s ease;
+                -moz-animation: cliqueEfeito 1s ease;
+                -o-animation: cliqueEfeito 1s ease;
+                animation: cliqueEfeito 1s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <button class="btn btn-info">Clique de Ação</button>
+                </div>
+                <div class="col-md-3 text-center">
+                    <button class="btn btn-success">Clique de Ação</button>
+                </div>
+                <div class="col-md-3 text-center">
+                    <button class="btn btn-danger">Clique de Ação</button>
+                </div>
+                <div class="col-md-3 text-center">
+                    <button class="btn btn-default">Clique de Ação</button>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script>
+            (function ($) {
+
+                $('.btn').click(function (e) {
+
+                    efeito($(this), e);
+                });
+
+                function efeito(t, e) {
+
+                    var a = '.efeito',
+                            c = '<span class="efeito"></span>';
+
+                    t.append(c);
+
+                    $(a).css({'top': e.offsetY, 'left': e.offsetX});
+
+                    setTimeout(function () {
+
+                        $(a).remove();
+                    }, 1100);
+                }
+            })(jQuery);
+        </script>
+    </body>
+</html>

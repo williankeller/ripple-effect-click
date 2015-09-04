@@ -1,2 +1,2 @@
-# Lollipop-Effect-Click
-#### Cique com efeito de ação dentro do botão
+# Lollipop Effect Click
+#### Clique com efeito do Android Lollipop dentro do botão

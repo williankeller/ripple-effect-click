@@ -93,9 +93,14 @@
     </section>
     <script src="http://thecodeplayer.com/u/js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script>
-      var current, ripple, d, x, y;
+      var element = 'li a, button, .to-ripple'
+      	   current, 
+      	   ripple, 
+      	   d, 
+      	   x, 
+      	   y;
 
-      $("li a, button").click(function (e) {
+      $(element).click(function (e) {
 
 	current = $(this);
 

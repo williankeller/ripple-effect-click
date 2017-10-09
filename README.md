@@ -1,11 +1,16 @@
-# [Lollipop Effect Click](http://butsource.github.io/Lollipop-Effect-Click/)
-#### Clique com efeito do Android Lollipop dentro dos elementos
+# Ripple Effect Click
 
-Provavelmente você já deve ter notado aquele efeito de ondulação (conhecido como "ripple") quando você clica em algum elemento no seu android.
+You probably have noticed that ripple effect (known as "ripple") when you click on an element on your Android.
+Now you can implement it in your application very fast.
 
-Agora você pode implementa-lo na sua aplicação bem rápido.
+#### How to use:
+Simple and standard use, just define the class or element you want to add the ripple effect.
+This use will add the ripple effet in all of your buttons.
+```javascript
+$('button').rippleEffect();
+```
 
-Você pode escolher entre duas maneiras simples de usar o recurso.
-
-* A primeira, nas classes que você deseja adiconar o efeito você pode inserir a classe ```.to-ripple```
-* A segunda, é você escolher os elemento que deseja animar, ```button, a, li```
+You also can define more than a element into the same call, like this:
+```javascript
+$('button, .to-ripple, .element-test').rippleEffect();
+```

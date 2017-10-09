@@ -1,0 +1,50 @@
+html,
+body {
+  background-color: #f8f8f8;
+  margin-bottom: 30px
+}
+
+h2 {
+  color: #555;
+  margin: 50px 0 20px 0;
+}
+
+button,
+button:active,
+button:focus {
+  outline: none !important;
+}
+
+.menu {
+  background: #fff; 
+  border-top: 6px solid hsl(180, 40%, 60%);
+  margin: 0 auto;
+  padding: 0;
+  width: 200px; 
+}
+.menu li {
+  list-style-type: none;
+  overflow: hidden;
+  position: relative;
+}
+.menu li a {
+  cursor: pointer;
+  display: block; padding: 10px 15px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+}
+.menu li a:hover {
+  text-decoration: none;
+}
+.menu li a .ripple {
+  background: hsl(180, 40%, 80%);
+}
+
+.default-div {
+  background-color: palevioletred;
+  color: #fff;
+  margin: 0 auto;
+  padding: 40px 0;
+  width: 200px;
+}

@@ -2,149 +2,45 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Clique com efeito do Android Lollipop dentro dos elementos</title>
+    <title>Ripple Effect Click</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" media="screen">
 
-    <style>
-      // Inínio dos estilos do clique
-      .prepare-ripple {
-        overflow: hidden;
-        position: relative;
-        outline:0;
-      }
-      .ripple {
-        display: block; 
-        position: absolute;
-        background: rgba(255, 255, 255, .3);
-        border-radius: 100%;
-        transform: scale(0);
-      }
-      .ripple.on-animate {
-        animation: ripple 0.65s linear;
-      }
-      @keyframes ripple {
-        100% {
-          opacity: 0; 
-          transform: scale(2.5);
-        }
-      }
-      /* Fim dos estilos do clique */
-      
-      body {
-        background-color: #f8f8f8
-      }
-      h1 {
-        margin-top: 100px;
-        color:#555
-      }
-      .menu {
-        background: white; 
-        border-top: 6px solid hsl(180, 40%, 60%);
-        width: 200px; 
-        margin: 0 auto;
-        padding:0
-      }
-      .menu li {
-        list-style-type: none;
-        position: relative;
-        overflow: hidden;
-      }
-      .text-center {
-        text-align: center
-      }
-      .menu li a {
-        text-align: left;
-        display: block; padding: 10px 15px;
-        text-decoration: none;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -o-user-select: none;
-        user-select: none;
-        position: relative;
-      }
-      .menu li a .ripple {
-        background: hsl(180, 40%, 80%);
-      }
-      .menu li a:hover {
-        text-decoration: none
-      }     
-    </style>
+    <!-- Used just to create example file. (Not necessary at all) -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="dist/css/example-page.css">
+    <link rel="stylesheet" href="dist/css/ripple-effect.css">
   </head>
   <body>    
-    <section class="main-content">      
+    <section class="container">      
       <div class="text-center">
-        <h1>Efeito nos botões</h1>
+
+        <h2>Ripple effect in any button</h2>
         <button type="button" class="btn btn-default">Default</button>
         <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-success">Success</button>
         <button type="button" class="btn btn-info">Info</button>
         <button type="button" class="btn btn-warning">Warning</button>
         <button type="button" class="btn btn-danger">Danger</button>
-        <h1>Efeito no menu</h1>
+
+        <h2>Ripple effect in menu list</h2>
         <ul class="menu">
-          <li><a>Início</a></li>
-          <li><a>Minha conta</a></li>
-          <li><a>Configurações</a></li>
-          <li><a>Sair</a></li>
-        </ul>      
+          <li><a href="javascript:void(0)">Home</a></li>
+          <li><a href="javascript:void(0)">Account</a></li>
+          <li><a href="javascript:void(0)">Settings</a></li>
+          <li><a href="javascript:void(0)">Exit</a></li>
+        </ul>
+
+        <h2>Ripple effect DIV elements</h2>
+        <div class="default-div to-ripple">DIV element</div>
       </div>
     </section>
-    <script src="http://thecodeplayer.com/u/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!-- Necessary jQuery instance file -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
+    <script src="dist/js/ripple-effect.min.js"></script>
     <script>
-      var element = 'li a, button, .to-ripple',
-      	   current, 
-      	   ripple, 
-      	   d, 
-      	   x, 
-      	   y;
-
-      $(element).click(function (e) {
-
-	current = $(this);
-
-	// Cria o elemento .ripple caso ele não exista
-	if (current.find(".ripple").length === 0) {
-
-	  // Prepara o pai para receber o elemento .ripple
-	  current.addClass('prepare-ripple');
-
-	  // Insere o elemento .ripple no conteúdo
-	  current.prepend("<span class='ripple'></span>");
-	}
-
-	// Define o .ripple criado em uma variável
-	ripple = current.find(".ripple");
-
-	// Em caso de cliques duplos rápidos, para a animação anterior
-	ripple.removeClass("on-animate");
-
-	// Define o tamanho do .ripple
-	if (!ripple.height() && !ripple.width()) {
-
-	  // Usa a largura ou a altura do pai 
-	  // O que for maior para fazer um círculo que pode cobrir todo o elemento.
-	  d = Math.max(current.outerWidth(), current.outerHeight());
-
-	  ripple.css({
-	    height: d,
-	    width: d
-	  });
-	}
-
-	// Coordenadas do clique
-	// Lógica = Coordenadas em relação a página 
-	// - Do pai, posição relativa para a página
-	x = e.pageX - current.offset().left - ripple.width() / 2;
-	y = e.pageY - current.offset().top - ripple.height() / 2;
-
-	// Define a posição e adiciona a classe .on-animate
-	ripple.css({
-	  top: y + 'px',
-	  left: x + 'px'
-	}).addClass("on-animate");
-      });
+      $('button, .menu a, .to-ripple').rippleEffect();
     </script>
   </body>
 </html>

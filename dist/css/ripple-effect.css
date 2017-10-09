@@ -1,0 +1,20 @@
+.prepare-ripple {
+  overflow: hidden;
+  position: relative;
+}
+.ripple {
+  background: rgba(255, 255, 255, .3);
+  border-radius: 100%;
+  display: block; 
+  position: absolute;
+  transform: scale(0);
+}
+.ripple.on-animate {
+  animation: ripple .65s linear;
+}
+@keyframes ripple {
+  100% {
+    opacity: 0; 
+    transform: scale(2.5);
+  }
+}

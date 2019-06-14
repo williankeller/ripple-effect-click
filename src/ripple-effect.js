@@ -1,14 +1,15 @@
-(function ($, document) {
+
+(function ($) {
   'use strict';
 
   /**
    * Define global function to set an element ripple effect.
    *
    * Basic usage:
-   * $('.to-ripple').rippleEfect();
+   * $('.to-ripple').rippleEffect();
    *
    * @param {Object} options
-   * @return {jQuery}
+   * @return {DOM}
    */
   $.fn.rippleEffect = function (options) {
 
@@ -18,8 +19,13 @@
      * @type {Object}
      */
     var defaults = {
-      // Submit form when select option is selected.
-      element: '.to-ripple'
+      onAnimate: 'on-animate',
+      preparing: 'prepare-ripple',
+      rippleElement: 'ripple',
+
+      element: '.to-ripple',
+      duration: null,
+      timingFunction: null
     };
     // Merging settings.
     var settings = $.extend({}, defaults, options);
@@ -32,22 +38,22 @@
      */
     var detectClickAction = function (element) {
       $(element).on('click', function (e) {
-        // Intance variables to use.
+        // Instance variables to use.
         var current = $(this), ripple, size, pageX, pageY;
 
         // Create ripple element if still don't exist.
-        if (current.find('.ripple').length === 0) {
+        if (current.find('.' + settings.rippleElement).length === 0) {
           // Prepare parent to get the ripple element.
-          current.addClass('prepare-ripple');
+          current.addClass(settings.preparing);
 
           // Insert the ripple element into the content element.
-          current.prepend('<span class="ripple"></span>');
+          current.prepend('<span class="' + settings.rippleElement + '"></span>');
         }
         // Define the created ripple into a variable.
         ripple = current.find('.ripple');
 
-        // If multiple clicks exists, stop previus animation.
-        ripple.removeClass('on-animate');
+        // If multiple clicks exists, stop previous animation.
+        ripple.removeClass(settings.onAnimate);
 
         // Define the ripple size.
         if (! ripple.height() && ! ripple.width()) {
@@ -56,7 +62,19 @@
 
           ripple.css({
             height: size,
-            width: size
+            width: size,
+          });
+        }
+
+        // Custom settings animations.
+        if (settings.duration !== null) {
+          ripple.css({
+            'animation-duration': settings.duration
+          });
+        }
+        if (settings.timingFunction !== null) {
+          ripple.css({
+            'animation-timing-function': settings.timingFunction
           });
         }
 
@@ -70,7 +88,7 @@
         ripple.css({
           top: pageY + 'px',
           left: pageX + 'px'
-        }).addClass('on-animate');
+        }).addClass(settings.onAnimate);
       });
       return false;
     };
@@ -98,4 +116,4 @@
      */
     return init(this);
   };
-})(jQuery, document);
+})(jQuery);

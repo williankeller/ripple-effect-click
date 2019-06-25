@@ -25,7 +25,7 @@ There are some extra settings you can apply to the ripple's configuration:
     - `timingFunction`: linear
     - ```javascript
       $('button').rippleEffect({
-          duration: '2s'
+          timingFunction: 'linear'
       });
       ```
 * *CSS animation-duration Property:*

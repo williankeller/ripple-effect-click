@@ -1,4 +1,3 @@
-
 (function ($) {
   'use strict';
 
@@ -104,7 +103,6 @@
     var init = function (elements) {
       // Tracks all elements passed in the function.
       elements.each(function () {
-
         // Build the custom select elements.
         detectClickAction(this);
       });

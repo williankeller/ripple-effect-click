@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/williankeller/ripple-effect-click.svg?branch=master)](https://travis-ci.org/williankeller/ripple-effect-click)
 
-You probably have noticed that ripple effect (known as "ripple") when you click on an element on your Android.
+You probably have noticed that ripple effect --(known as "ripple")-- when you click on an element on your Android.
 Now you can implement it to your application very fast and easily.
 
 ### How to use:
@@ -19,6 +19,8 @@ $('button, .to-ripple, .element-test').rippleEffect();
 
 ### Extra configurations:
 There are some extra settings you can apply to the ripple's configuration:
+- timingFunction
+- duration
 
 **Animation properties:**
 * *CSS animation-timing-function Property:*
